@@ -1,0 +1,60 @@
+ftdi_pwr
+========
+Manage power and reset on ATX motherboard.
+
+This application uses the CBUS pins on the FTDI EVAL232R to control the reset
+and power pins on ATX motherboard.
+
+It currently has four modes.
+
+* check - Check eeprom config for CBUS pins
+* reset - Toggle CBUS2 for 1 second
+* power - Toggle CBUS3 for 1 second
+* longpower - Toggle CBUS3 for 5 seconds
+
+Requirements
+------------
+To compile and run, you need libftdi-0.x. At least 0.19.
+
+License
+-------
+GPLv3, see COPYING for more information.
+
+Hardware
+--------
+This application is designed to be used together with FTDI EVAL232R and a
+simple circuit shown below.
+
+                       o RESET+
+                       |
+             ___     |/
+CBUS2 o-----|___|----| BC548
+             4.7k    |>
+                       |
+                       o GND
+
+                       o PWR+
+                       |
+             ___     |/
+CBUS3 o-----|___|----| BC548
+             4.7k    |>
+                       |
+                       o GND
+
+I soldered this with pin headers so that I could use the power and reset
+buttons on the case while having this circuit connected. This way, I didn't
+have to modify the case button cables.
+
+For the RESET button, it looks like this. The POWER button is similar.
+
+Motherboard           Circuit
+    RESET- |-- >----o   GND   o--|-- >----o
+                                           | Reset button
+    RESET+ |-- >----o RESET+  o--|-- >----o
+
+|-- Pin header
+>-- Jumper cable
+
+More information
+----------------
+See https://github.com/gonzzor/ftdi_pwr for more information.
