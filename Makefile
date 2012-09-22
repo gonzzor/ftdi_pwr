@@ -1,5 +1,5 @@
-LDLIBS=-lftdi
-CFLAGS=-std=gnu99 -g -O2
+LDLIBS = -lftdi
+CFLAGS += -std=gnu99
 
 all: ftdi_pwr
 
